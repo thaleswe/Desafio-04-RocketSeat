@@ -19,7 +19,7 @@ usersRoutes.get("/users/:user_id", (request, response) =>
   showUserProfileController.handle(request, response)
 );
 
-usersRoutes.get("/", (request, response) =>
+usersRoutes.get("/users", (request, response) =>
   listAllUsersController.handle(request, response)
 );
 

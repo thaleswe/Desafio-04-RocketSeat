@@ -12,6 +12,6 @@ class TurnUserAdminController {
 
     return response.status(200).send();
   }
-} 
-
+}  
+ 
 export { TurnUserAdminController };
