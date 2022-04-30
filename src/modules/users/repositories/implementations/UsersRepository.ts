@@ -1,5 +1,5 @@
-import { User } from "../../model/User";
-import { IUsersRepository, ICreateUserDTO } from "../IUsersRepository";
+import { User } from '../../model/User';
+import { IUsersRepository, ICreateUserDTO } from '../IUsersRepository';
 
 class UsersRepository implements IUsersRepository {
   private users: User[];
@@ -20,13 +20,11 @@ class UsersRepository implements IUsersRepository {
 
   create({ name, email }: ICreateUserDTO): User {
     const user = new User();
-
     Object.assign(user, {
       name,
-      admin: false,
       email,
-      create_at: new Date(),
-      updated_at: new Date()
+      created_at: new Date(),
+      updated_at: new Date(),
     });
 
     this.users.push(user);
@@ -35,21 +33,25 @@ class UsersRepository implements IUsersRepository {
   }
 
   findById(id: string): User | undefined {
-    const user = this.users.find(user => user.id === id);
+    const user = this.users.find((user) => user.id === id);
 
     return user;
   }
 
   findByEmail(email: string): User | undefined {
-    const user = this.users.find(user => user.email === email);
+    const user = this.users.find((user) => user.email === email);
 
     return user;
   }
 
   turnAdmin(receivedUser: User): User {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { admin, updated_at, ...rest } = receivedUser;
+
     Object.assign(receivedUser, {
       admin: true,
-      updated_at: new Date()
+      updated_at: new Date(),
+      ...rest,
     });
 
     return receivedUser;
