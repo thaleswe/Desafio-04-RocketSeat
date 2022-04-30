@@ -25,7 +25,7 @@ class UsersRepository implements IUsersRepository {
       name,
       admin: false,
       email,
-      create_at: new Date(),
+      created_at: new Date(),
       updated_at: new Date()
     });
 
